@@ -1,11 +1,16 @@
 # Ductor_healthcare_CS128H_project
-Final project for CS128H section, implement an app helping people see a doctor in home and check their health condition.
 
 Group Name: Cureiosity
 
 Group member names and NetIDs: Xinyun Zhang  xinyunz5
 
 Project Introduction:
+
+Final project for CS128H section, implement an app helping people see a doctor in home and check their health condition. 
+
+Goals and objectives: design good UI, implement a chat platform (at least), and if I have more time, inbed an AI chat box in it.
+WHY: to help people become healthier and know what is happening to their body anytime without going to a specific hospital. I think the significant utility is in the mental side, people may feel a master of their body so they will not worry all the time.
+
 
 Please provide a brief description of your project. List the goals and objectives of your project and explain why you’ve chosen to work on this project.
 
