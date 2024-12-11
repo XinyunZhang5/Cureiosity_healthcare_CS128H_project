@@ -2,7 +2,7 @@ use yew::prelude::*;
 use yew_router::prelude::*;
 use crate::Route;
 use crate::UserInfo;
-use wasm_bindgen::JsCast; // 修复错误，导入 JsCast
+use wasm_bindgen::JsCast;
 
 #[function_component(Login)]
 pub fn login() -> Html {
@@ -12,18 +12,16 @@ pub fn login() -> Html {
     let on_submit = {
         let user_info = user_info.clone();
         Callback::from(move |event: SubmitEvent| {
-            event.prevent_default(); // 防止表单提交刷新页面
+            event.prevent_default(); 
 
-            // 获取目标表单
             let form = event
-                .target_unchecked_into::<web_sys::HtmlFormElement>(); // 强制转换为表单元素
+                .target_unchecked_into::<web_sys::HtmlFormElement>();
             
-            // 通过 query_selector 获取 Name 和 Email 的值
             let name_input = form
                 .query_selector("[name='name']")
                 .unwrap()
                 .unwrap()
-                .dyn_into::<web_sys::HtmlInputElement>() // 使用 JsCast 提供的 dyn_into
+                .dyn_into::<web_sys::HtmlInputElement>()
                 .unwrap()
                 .value();
 
@@ -31,21 +29,19 @@ pub fn login() -> Html {
                 .query_selector("[name='email']")
                 .unwrap()
                 .unwrap()
-                .dyn_into::<web_sys::HtmlInputElement>() // 使用 JsCast 提供的 dyn_into
+                .dyn_into::<web_sys::HtmlInputElement>()
                 .unwrap()
                 .value();
 
-            // 更新全局状态
             user_info.set(UserInfo { name: name_input, email: email_input });
 
-            // 跳转到 Home 页面
             navigator.push(&Route::Home);
         })
     };
 
     html! {
-        <div>
-            <h1>{"Login"}</h1>
+        <div style="background-image: url('/background.png'); background-size: cover; min-height: 100vh; display: flex; flex-direction: column; padding: 20px;">
+            <h1 style = "margin-top: 60px;">{"Login"}</h1>
             <form onsubmit={on_submit}>
                 <label>{"Name: "}</label>
                 <input type="text" name="name" required=true />
